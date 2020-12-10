@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${pageTitle}"></title>
+</head>
+<body>
+
+<form th:action="${formAction}" th:object="${user}"
+      method="post">
+    <table border="1"  width="100%">
+        <tr>
+            <th colspan="2" th:text="${formTitle}"></th>
+        </tr>
+        <tr>
+            <td><label>Name</label></td>
+            <td><input type="text" th:field="*{name}"></td>
+
+        </tr>
+        <tr>
+            <td><label>Last Name</label></td>
+            <td><input type="text" th:field="*{lastName}"></td>
+        </tr>
+        <tr>
+            <td><label>Password</label></td>
+            <td><input type="text" th:field="*{password}"></td>
+        </tr>
+        <tr>
+            <td colspan="2"><input type="submit" th:value="${submitButtonText}"></td>
+        </tr>
+    </table>
+    <th:block th:if="${showUserId}"><input type="hidden" th:field="*{id}"></th:block>
+</form>
+
+<br>
+<div>
+    <a th:href="@{/logout}">Logout</a>
+</div>
+
+</body>
+</html>
